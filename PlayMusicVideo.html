@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewpoint" content="width=device-width,initial-scale=1.0">
+	<title>MusicPlayList</title>
+
+	<!-- fount awasome cdn link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Css Link -->
+	<link rel="stylesheet" type="text/css" href="D:\FinalProject-MusicPlayList\PlayMusicVideo.css">
+</head>
+<body>
+	<!-- header section start -->
+	<header>
+		<a href="#" class="Logo">MusicPlayList</a>
+		<nav class="menu">
+			<a href="file:///D:/FinalProject-MusicPlayList/HomePage.html#Home" class="back">backToHomepage</a>
+		</nav>
+	</header>
+	<!-- section end -->
+
+
+	<!-- Home Section Start -->
+
+	<section class="Home">
+		<div class="content">
+		<h1>Welcome to Latest Video Songs</h1>			
+		</div>
+		<div class="content_video">
+			<h2 id="title">Video1</h2>
+			<h3 id="sub">Latest</h3>
+		</div>
+			<!-- Video -->
+			<div class="content_video1">
+				<video controls loop autoplay>
+					<source src="videos/Cartoone1.mp4" type="video/mp4">
+				</video>
+			</div>
+                <!-- Controles -->
+                <div class="Video_controls">
+                	<i class="fas fa-backward" id="prev" title="prev"></i>
+                	<i class="far fa-play-circle" id="play" title="play"></i>
+                	<i class="fas fa-forward" id="next" title="next"></i>	
+                </div>
+	</section>
+	<!-- End section Home -->
+</body>
+
+<script>
+	const music=document.querySelector("video");
+	const play=document.getElementById("play");
+	const title=document.getElementById("title");
+	const artist=document.getElementById("sub");
+	const prev=document.getElementById("prev");
+	const next=document.getElementById("next");
+	
+	const songs=[{
+		name:"Cartoone1",
+		title:"Video1",
+		sub:"pratiksha",
+	},
+	{
+		name:"Cartoone2",
+		title:"Video2",
+		sub:"priti",
+	},
+	{
+		name:"Cartoone3",
+		title:"Video3",
+		sub:"shruti",
+	},
+	]
+    let isplaying=false;
+	// for play
+	const playMusic=()=>{
+		isplaying=true;
+		music.play();
+		play.classList.replace("fa-play-circle","fa-pause-circle");
+	};
+	// for pause
+	const pauseMusic=()=>{
+		isplaying=false;
+		music.pause();
+		play.classList.replace("fa-pause-circle","fa-play-circle");
+	};
+
+	play.addEventListener('click',()=>{
+		if(isplaying){
+			pauseMusic();
+		}else{
+			playMusic();
+		}
+	});
+	
+	// changing the music data
+
+	const loadsong = (songs)=>{
+		title.textContent=songs.title;
+		sub.textContent=songs.sub;
+		music.src="videos/"+songs.name+".mp4";
+	};
+
+	songIndex = 0;
+
+	//next playsong
+	const nextSong=()=>{
+		songIndex = (songIndex + 1) % songs.length;
+		loadsong(songs[songIndex]);
+	};
+
+	//prev playsong
+	const prevSong=()=>{
+		songIndex = (songIndex - 1 + songs.length) % songs.length;
+		loadsong(songs[songIndex]);
+	};
+
+  next.addEventListener('click',nextSong);
+  prev.addEventListener('click',prevSong);
+
+	// let isplaying=false;
+	// // for play
+	// const playVideo=()=>{
+	// 	isplaying=true;
+	// 	video.play();
+	// 	play.classList.replace("fa-play-circle","fa-pause-circle");
+	// };
+	// // for pause
+	// const pauseVideo=()=>{
+	// 	isplaying=false;
+	// 	video.pause();
+	// 	play.classList.replace("fa-pause-circle","fa-play-circle");
+	// };
+
+	// play.addEventListener('click',()=>{
+	// 	if(isplaying){
+	// 		pauseVideo();
+	// 	}else{
+	// 		playVideo();
+	// 	}
+	// });
+	
+	// // changing the video data
+
+	// const loadsong = (songs)=>{
+	// 	title.textContent=songs.title;
+	// 	sub.textContent=songs.sub;
+	// 	video.src="songs/"+songs.name+".mp3";
+	// };
+
+	// songIndex = 0;
+
+	// //next playsong
+	// const nextSong=()=>{
+	// 	songIndex = (songIndex + 1) % songs.length;
+	// 	loadsong(songs[songIndex]);
+	// };
+
+	// //prev playsong
+	// const prevSong=()=>{
+	// 	songIndex = (songIndex - 1 + songs.length) % songs.length;
+	// 	loadsong(songs[songIndex]);
+	// };
+
+ //  next.addEventListener('click',nextSong);
+ //  prev.addEventListener('click',prevSong);
+</script> 
+
+</html>

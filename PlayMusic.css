@@ -1,0 +1,129 @@
+*{
+	font-family: 'poppins', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	border: none;
+	text-transform: capitalize;
+}
+html{
+	font-size: 88.5%;
+	overflow: hidden;
+}
+section{
+	min-height: 100vh;
+	padding: rem 9%;
+	padding-top:8rem;
+	/*background-color: black;*/
+}
+
+header{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: black;
+}
+
+header .Logo{
+	font-size: 2.5rem;
+	color: red;
+}
+
+header .menu a{
+	font-size: 1.5rem;
+	margin-left: 1rem;
+	padding: 1rem 1rem;
+	border-radius: .5rem;
+	color: red;
+}
+
+header .menu a:hover{
+	background-color: yellow;
+	color: black;
+}
+.Home{
+	background-color: black;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.Home .content{
+	text-align: center;
+	padding: 0rem;
+	background-color: black;
+
+}
+.Home .content h1{
+	font-size: 2.5rem;
+	color: lightblue;
+}
+.content_Music{
+	width: 25rem;
+	height: 2rem;
+	/*border-right-color: white;*/
+	border-radius: 2rem;
+	padding: 3rem;
+}
+.content_Music #title{
+	text-transform: uppercase;
+	letter-spacing: .2rem;
+	color: lightblue;
+	margin-top: 12rem;
+	font-size: 2rem;
+	font-weight: 500;
+
+}
+.content_Music #artist{
+	text-transform: capitalize;
+	letter-spacing: .2rem;
+	color: lightblue;
+	margin: 2rem 0 0.5rem 0;
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+.content_img{
+	width: 20rem;
+	height: 20rem;
+	margin: auto;
+}
+img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+}
+.Music_controls{
+	color: lightblue;
+	font-size: 2rem;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	margin-top: 3rem;
+}
+.Music_controls{
+	width: 20rem;
+	display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+/*animation*/
+.anime{
+	animation: rotateplayer 3s linear infinite;
+}
+@keyframes rotateplayer {
+	from{transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg); 
+	}
+}

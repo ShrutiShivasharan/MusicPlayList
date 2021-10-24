@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewpoint" content="width=device-width,initial-scale=1.0">
+	<title>MusicPlayList</title>
+
+	<!-- fount awasome cdn link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Css Link -->
+	<link rel="stylesheet" type="text/css" href="D:\FinalProject-MusicPlayList\PlayMusic.css">
+</head>
+<body>
+	<!-- header section start -->
+	<header>
+		<a href="#" class="Logo">MusicPlayList</a>
+		<nav class="menu">
+			<a href="file:///D:/FinalProject-MusicPlayList/HomePage.html#Home" class="back">backToHomepage</a>
+		</nav>
+	</header>
+	<!-- section end -->
+	
+	<!-- Home Section Start -->
+	<section class="Home">
+		<div class="content">
+		<h1>Welcome to Latest Songs Playlist</h1>			
+		</div>
+		<div class="content_Music">
+			<h2 id="title">Song1</h2>
+			<h3 id="artist">Shruti</h3>
+			</div>
+			<!-- image -->
+			<div class="content_img">
+				<img src="images/s1.jpg">
+			</div>
+			<!-- Audio -->
+			<div class="content_audio">
+				<audio src="songs/s1.mp3"></audio>
+                <!-- Controles -->
+                <div class="Music_controls">
+                	<i class="fas fa-backward" id="prev" title="prev"></i>
+                	<i class="far fa-play-circle" id="play" title="play"></i>
+                	<i class="fas fa-forward" id="next" title="next"></i>	
+                </div>
+			</div>
+	</section>
+	<!-- End section Home -->
+</body>
+<script>
+	const music=document.querySelector("audio");
+	const img=document.querySelector("img");
+	const play=document.getElementById("play");
+	const title=document.getElementById("title");
+	const artist=document.getElementById("artist");
+	const prev=document.getElementById("prev");
+	const next=document.getElementById("next");
+	
+	const songs=[{
+		name:"s1",
+		title:"song1",
+		artist:"prati",
+	},
+	{
+		name:"s2",
+		title:"song2",
+		artist:"priti",
+	},
+	{
+		name:"s3",
+		title:"song3",
+		artist:"shruti",
+	},
+	]
+
+
+	let isplaying=false;
+	// for play
+	const playMusic=()=>{
+		isplaying=true;
+		music.play();
+		play.classList.replace("fa-play-circle","fa-pause-circle");
+		img.classList.add("anime");
+	};
+	// for pause
+	const pauseMusic=()=>{
+		isplaying=false;
+		music.pause();
+		play.classList.replace("fa-pause-circle","fa-play-circle");
+		img.classList.remove("anime");
+	};
+
+	play.addEventListener('click',()=>{
+		if(isplaying){
+			pauseMusic();
+		}else{
+			playMusic();
+		}
+	});
+	
+	// changing the music data
+
+	const loadsong = (songs)=>{
+		title.textContent=songs.title;
+		artist.textContent=songs.artist;
+		music.src="songs/"+songs.name+".mp3";
+		img.src="images/"+songs.name+".jpg";
+	};
+
+	songIndex = 0;
+
+	//next playsong
+	const nextSong=()=>{
+		songIndex = (songIndex + 1) % songs.length;
+		loadsong(songs[songIndex]);
+	};
+
+	//prev playsong
+	const prevSong=()=>{
+		songIndex = (songIndex - 1 + songs.length) % songs.length;
+		loadsong(songs[songIndex]);
+	};
+
+  next.addEventListener('click',nextSong);
+  prev.addEventListener('click',prevSong);
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script>
+	const music=document.querySelector("audio");
+	const img=document.querySelector("img");
+	const play=document.getElementById("play");
+	const title=document.getElementById("title");
+	const artist=document.getElementById("artist");
+	const prev=document.getElementById("prev");
+	const next=document.getElementById("next");
+
+	const songs=[{
+		name:"s1",
+		title:"Song1",
+		artist:"Shruti",
+	},
+	{
+		name:"s2",
+		title:"Song2",
+		artist:"Priti",
+	},
+	{
+		name:"s3",
+		title:"Song3",
+		artist:"Pratiksha",
+	},
+	]
+
+	let isplaying=false;
+
+	// for play
+
+	const playmusic=()=>{
+		isplaying=true;
+		musci.play();
+		play.classList.replace("far fa-play-circle","far fa-play-circle");
+		img.classList.add("anime");
+	}
+	// for pouse
+
+	const pausemusic=()=>{
+		isplaying=false;
+		musci.pause();
+		play.classList.replace("far fa-pause-circle","far fa-play-circle");
+		img.classList.remove("anime");
+	}
+
+    play.addEventListener('click',()=>{
+    	if (isplaying) {
+    		pausemusic();
+    	}else{
+    		playmusic();
+    	}
+    });
+
+    // Chamging the Music Data
+
+    const loadsong = (songs)=>{
+    	title.textContent=songs.title;
+    	artist.textContent=songs.artist;
+    	musci.src="songs/"+songs.name+".mp3";
+    	img.src="images/"+songs.name+".jpg";
+    }
+    songIndex=0;
+
+    // next play song 
+
+    const nextsongs=()=>{
+    	songIndex = (songIndex + 1) % songs.length;
+    	loadsong(songs[songIndex]);
+    };
+
+    // prev play song
+
+    const prevsongs=()=>{
+    	songIndex = (songIndex - 1 + songs.length ) % songs.length;
+    	loadsong(songs[songIndex]);
+    };
+
+    next.addEventListener('click',nextsongs);
+    prev.addEventListener('click',prevsongs);
+</script> -->
+</html>
